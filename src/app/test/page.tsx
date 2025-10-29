@@ -1,99 +1,91 @@
-"use client";
+'use client'
 
-import { useEffect, useRef } from "react";
-import maplibregl, { Map, Popup } from "maplibre-gl";
-import "maplibre-gl/dist/maplibre-gl.css";
+import { useEffect, useRef } from 'react'
+import maplibregl, { Map, Popup } from 'maplibre-gl'
+import 'maplibre-gl/dist/maplibre-gl.css'
 
-// Import GeoJSON Indonesia (pastikan ada di /assets/id.json)
-import indonesia from "@/assets/id.json";
+import indonesia from '@/assets/id.json'
 
 export default function IndoMap() {
-    const mapContainer = useRef<HTMLDivElement>(null);
-    const mapRef = useRef<Map | null>(null);
+  const mapContainer = useRef<HTMLDivElement>(null)
+  const mapRef = useRef<Map | null>(null)
 
-    useEffect(() => {
-        if (mapRef.current || !mapContainer.current) return;
+  useEffect(() => {
+    if (mapRef.current || !mapContainer.current) return
 
-        // Batas koordinat Indonesia (SW corner, NE corner)
-        const bounds: [[number, number], [number, number]] = [
-            [94, -12], // barat daya
-            [141, 6], // timur laut
-        ];
+    const bounds: [[number, number], [number, number]] = [
+      [94, -12],
+      [141, 6],
+    ]
 
-        const map = new maplibregl.Map({
-            container: mapContainer.current,
-            style: {
-                version: 8,
-                sources: {},
-                layers: [], // kosong → hanya layer kita yang tampil
-            },
-            center: [120, -2],
-            zoom: 4,
-            maxBounds: bounds, // batasi pan
-        });
+    const map = new maplibregl.Map({
+      container: mapContainer.current,
+      style: {
+        version: 8,
+        sources: {},
+        layers: [],
+      },
+      center: [120, -2],
+      zoom: 4,
+      maxBounds: bounds,
+    })
 
-        mapRef.current = map;
+    mapRef.current = map
 
-        map.on("load", () => {
-            // Tambahkan source dari GeoJSON
-            map.addSource("indonesia", {
-                type: "geojson",
-                data: indonesia as any,
-            });
+    map.on('load', () => {
+      map.addSource('indonesia', {
+        type: 'geojson',
+        data: indonesia as any,
+      })
 
-            // Layer isi provinsi
-            map.addLayer({
-                id: "indo-fill",
-                type: "fill",
-                source: "indonesia",
-                paint: {
-                    "fill-color": "#60a5fa",
-                    "fill-opacity": 0.7,
-                },
-            });
+      map.addLayer({
+        id: 'indo-fill',
+        type: 'fill',
+        source: 'indonesia',
+        paint: {
+          'fill-color': '#ec4899',
+          'fill-opacity': 0.7,
+        },
+      })
 
-            // Layer outline
-            map.addLayer({
-                id: "indo-outline",
-                type: "line",
-                source: "indonesia",
-                paint: {
-                    "line-color": "#000",
-                    "line-width": 1,
-                },
-            });
+      map.addLayer({
+        id: 'indo-outline',
+        type: 'line',
+        source: 'indonesia',
+        paint: {
+          'line-color': '#be185d',
+          'line-width': 1,
+        },
+      })
 
-            // Popup untuk hover
-            const popup = new Popup({
-                closeButton: false,
-                closeOnClick: false,
-            });
+      const popup = new Popup({
+        closeButton: false,
+        closeOnClick: false,
+      })
 
-            map.on("mousemove", "indo-fill", (e) => {
-                if (e.features && e.features.length > 0) {
-                    const feature = e.features[0];
-                    const props = feature.properties as any;
+      map.on('mousemove', 'indo-fill', (e) => {
+        if (e.features && e.features.length > 0) {
+          const feature = e.features[0]
+          const props = feature.properties as any
+          const provName = props.NAME_1 || props.name || props.Provinsi || 'Tanpa Nama'
 
-                    // cek field nama provinsi di GeoJSON
-                    const provName = props.NAME_1 || props.name || props.Provinsi || "Tanpa Nama";
+          map.getCanvas().style.cursor = 'pointer'
 
-                    map.getCanvas().style.cursor = "pointer";
+          popup.setLngLat(e.lngLat).setHTML(`<div style="font-weight:bold; color:#be185d;">${provName}</div>`).addTo(map)
+        }
+      })
 
-                    popup.setLngLat(e.lngLat).setHTML(`<div style="font-weight:bold">${provName}</div>`).addTo(map);
-                }
-            });
+      map.on('mouseleave', 'indo-fill', () => {
+        map.getCanvas().style.cursor = ''
+        popup.remove()
+      })
+    })
 
-            map.on("mouseleave", "indo-fill", () => {
-                map.getCanvas().style.cursor = "";
-                popup.remove();
-            });
-        });
+    return () => {
+      map.remove()
+      mapRef.current = null
+    }
+  }, [])
 
-        return () => {
-            map.remove();
-            mapRef.current = null;
-        };
-    }, []);
-
-    return <div ref={mapContainer} className="h-screen w-screen" />;
+  return <div ref={mapContainer} className='h-screen w-screen' />
 }
