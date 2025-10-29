@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 import maplibregl, { Map, Popup } from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 
-import indonesia from '@/assets/id.json'
+import indonesia from '@/assets/coordinates/id.json'
 
 export default function IndoMap() {
   const mapContainer = useRef<HTMLDivElement>(null)
