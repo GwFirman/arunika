@@ -34,8 +34,8 @@ export default async function RootLayout({
     }
 
     return (
-        <html lang={locale} suppressContentEditableWarning>
-            <body className={`${manrope.className} antialiased  dark:bg-foreground dark:text-background`}>
+        <html lang={locale} suppressHydrationWarning>
+            <body className={`${manrope.className} antialiased dark:bg-foreground dark:text-background`}>
                 <NextIntlClientProvider>
                     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
                         {children}
