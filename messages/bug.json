@@ -1,7 +1,7 @@
 {
-    "HomePage": {
-        "title": "Temmokka Ri Cerita na Warisan Budaya Nusantara Lewat Imajinasi Tanpa Batas",
-        "description": "Dari dongeng ajaib, baju adat, sampai sejarah daerah, mu bisa massolangi bareng Arunika, tempat belajar budaya yang rame na makessing!",
-        "button": "Massolangi Sekarang"
-    }
+  "HomePage": {
+    "title": "Temmokka Ri Cerita na <highlight>Warisan Budaya Nusantara</highlight> Lewat Imajinasi Tanpa Batas",
+    "description": "Dari dongeng ajaib, baju adat, sampai sejarah daerah, mu bisa massolangi bareng Arunika, tempat belajar budaya yang rame na makessing!",
+    "button": "Massolangi Sekarang"
+  }
 }

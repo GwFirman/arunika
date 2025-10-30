@@ -1,7 +1,7 @@
 {
-    "HomePage": {
-        "title": "Temokna Crita lan Warisan Budaya Nusantara Kanthi Imajinasi Tanpa Wates",
-        "description": "Saka dongeng gaib, sandhangan adat, nganti sejarah daerah kabeh bisa kok jelajahi bareng Arunika, papan sinau budaya sing nyenengake lan warna-warni!",
-        "button": "Wiwi Jelajah"
-    }
+  "HomePage": {
+    "title": "Temokna Crita lan <highlight>Warisan Budaya Nusantara</highlight> Kanthi Imajinasi Tanpa Wates",
+    "description": "Saka dongeng gaib, sandhangan adat, nganti sejarah daerah kabeh bisa kok jelajahi bareng Arunika, papan sinau budaya sing nyenengake lan warna-warni!",
+    "button": "Wiwi Jelajah"
+  }
 }

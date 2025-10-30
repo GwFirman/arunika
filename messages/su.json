@@ -1,7 +1,7 @@
 {
-    "HomePage": {
-        "title": "Panggihan Carita & Warisan Budaya Nusantara Kalawan Imajinasi Tanpa Wates",
-        "description": "Ti dongeng ajaib, pakéan adat, nepi ka sajarah daerah, sadayana tiasa diajar bareng Arunika, tempat diajar budaya anu pikaresepeun, interaktif, tur pinuh warna!",
-        "button": "Mimitian Jelajah"
-    }
+  "HomePage": {
+    "title": "Panggihan Carita & <highlight>Warisan Budaya Nusantara</highlight> Kalawan Imajinasi Tanpa Wates",
+    "description": "Ti dongeng ajaib, pakéan adat, nepi ka sajarah daerah, sadayana tiasa diajar bareng Arunika, tempat diajar budaya anu pikaresepeun, interaktif, tur pinuh warna!",
+    "button": "Mimitian Jelajah"
+  }
 }
