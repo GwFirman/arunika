@@ -1,3 +1,4 @@
+import LocaleSwitcher from "@/components/LocaleSwitcher";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
@@ -32,6 +33,7 @@ export default function Home() {
                     </a>
                 </div>
                 <h1>{t("title")}</h1>
+                <LocaleSwitcher />
             </main>
         </div>
     );
