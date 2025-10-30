@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
-import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { NextIntlClientProvider } from "next-intl";
 
 import "../globals.css";
 
 import { routing } from "@/i18n/routing";
-import { notFound } from "next/navigation";
 import { ThemeProvider } from "@/components/theme-provider";
 
 const manrope = Manrope({
@@ -28,10 +27,7 @@ export default async function RootLayout({
     children: React.ReactNode;
     params: Promise<{ locale: string }>;
 }>) {
-    const { locale } = await params;
-    if (!hasLocale(routing.locales, locale)) {
-        notFound();
-    }
+    const { locale } = await params.catch(() => ({ locale: "en" }));
 
     return (
         <html lang={locale} suppressHydrationWarning>
