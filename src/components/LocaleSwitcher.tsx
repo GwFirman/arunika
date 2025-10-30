@@ -11,7 +11,7 @@ export default function LocaleSwitcher() {
     const switchLocale = (newLocale: string) => {
         if (newLocale !== locale) {
             router.replace(pathname, { locale: newLocale });
-            router.refresh();
+            // router.refresh();
         }
     };
 
