@@ -1,19 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Manrope } from "next/font/google";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 
 import "../globals.css";
 
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
+import { ThemeProvider } from "@/components/theme-provider";
 
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
+const manrope = Manrope({
     subsets: ["latin"],
 });
 
@@ -39,9 +34,13 @@ export default async function RootLayout({
     }
 
     return (
-        <html lang={locale}>
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-                <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <html lang={locale} suppressContentEditableWarning>
+            <body className={`${manrope.className} antialiased  dark:bg-foreground dark:text-background`}>
+                <NextIntlClientProvider>
+                    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+                        {children}
+                    </ThemeProvider>
+                </NextIntlClientProvider>
             </body>
         </html>
     );
