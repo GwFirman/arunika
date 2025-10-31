@@ -31,7 +31,7 @@ export default async function RootLayout({
 
     return (
         <html lang={locale} suppressHydrationWarning>
-            <body className={`${manrope.className} antialiased dark:bg-foreground dark:text-background`}>
+            <body className={`${manrope.className} antialiased dark:bg-foreground text-font-primary dark:text-background`}>
                 <NextIntlClientProvider>
                     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
                         {children}
