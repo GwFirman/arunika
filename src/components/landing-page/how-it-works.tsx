@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const steps = [
     {
         num: "01",

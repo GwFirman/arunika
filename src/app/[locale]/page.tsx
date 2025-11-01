@@ -1,6 +1,7 @@
 "use client";
 
 import AdventagesSection from "@/components/landing-page/adventage";
+import CtaSection from "@/components/landing-page/cta";
 import FeaturesSection from "@/components/landing-page/features";
 import HeroSection from "@/components/landing-page/hero";
 import HowItWorksSection from "@/components/landing-page/how-it-works";
@@ -16,6 +17,7 @@ export default function Home() {
             <WhatCanLearnSection />
             <HowItWorksSection />
             <FeaturesSection />
+            <CtaSection />
         </>
     );
 }

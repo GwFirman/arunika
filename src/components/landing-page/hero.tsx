@@ -5,9 +5,16 @@ import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import Image from 'next/image'
 import PinMapDesign from '@/components/pin-map-design'
+import SquarePinMap from '@/components/square-pin-map'
 
 import map from '@/assets/svg/map.svg'
-import pinmap from '@/assets/images/pinmap1.jpg'
+import pinmap1 from '@/assets/images/pin-map2.jpg'
+import pinmap2 from '@/assets/images/pin-map3.jpg'
+import pinmap3 from '@/assets/images/pin-map4.jpg'
+import pinmap4 from '@/assets/images/pin-map5.jpg'
+import pinmap5 from '@/assets/images/pin-map6.jpg'
+import pinmap6 from '@/assets/images/pin-map7.jpg'
+import pinmapsquare from '@/assets/images/square-pin.jpg'
 import { ArrowUpRight } from 'lucide-react'
 
 const HeroSection = () => {
@@ -27,13 +34,15 @@ const HeroSection = () => {
         <motion.div style={{ y: mapY }} className='absolute inset-0 bottom-40 pointer-events-none'>
           <div className='relative w-full h-full md:h-screen overflow-hidden'>
             <Image src={map} alt='map' draggable={false} loading='eager' fill className='object-contain md:object-contain object-top select-none' priority />
-            <PinMapDesign src={pinmap} className='left-[16%] bottom-[56%]' />
-            <PinMapDesign src={pinmap} className='left-[35%] bottom-[35%]' />
-            <PinMapDesign src={pinmap} className='left-[46.5%] bottom-[30.5%]' />
-            <PinMapDesign src={pinmap} className='right-[39%] bottom-[51%]' />
-            <PinMapDesign src={pinmap} className='right-[16%] bottom-[65%]' />
-            <PinMapDesign src={pinmap} className='right-[3%] bottom-[60%]' />
-            <PinMapDesign src={pinmap} className='right-[6%] bottom-[50%]' />
+            
+            {/* Pin map */}
+            <PinMapDesign src={pinmap1} className='left-[16%] bottom-[56%]' />
+            <PinMapDesign src={pinmap2} className='left-[34.5%] bottom-[35%]' />
+            <SquarePinMap src={pinmapsquare} className='left-[43%] bottom-[27.5%]' />
+            <PinMapDesign src={pinmap3} className='right-[38%] bottom-[52%]' />
+            <PinMapDesign src={pinmap6} className='right-[15%] bottom-[65%]' />
+            <PinMapDesign src={pinmap5} className='right-[2%] bottom-[61%]' />
+            <PinMapDesign src={pinmap4} className='right-[5%] bottom-[51%]' />
           </div>
         </motion.div>
 
